@@ -2,8 +2,6 @@ import numpy as np
 import tensorflow as tf
 import scipy.sparse as sp
 
-
-
 def weight_variable_glorot(input_dim, output_dim, name=""):
     init_range = np.sqrt(6.0/(input_dim + output_dim))
     initial = tf.random_uniform(
@@ -15,8 +13,6 @@ def weight_variable_glorot(input_dim, output_dim, name=""):
 
     return tf.Variable(initial, name=name)
 
-
-
 def dropout_sparse(x, keep_prob, num_nonzero_elems):
     noise_shape = [num_nonzero_elems]
     random_tensor = keep_prob
@@ -24,7 +20,6 @@ def dropout_sparse(x, keep_prob, num_nonzero_elems):
     dropout_mask = tf.cast(tf.floor(random_tensor), dtype=tf.bool)
     pre_out = tf.sparse_retain(x, dropout_mask)
     return pre_out*(1./keep_prob)
-
 
 
 def sparse_to_tuple(sparse_mx):
@@ -36,7 +31,6 @@ def sparse_to_tuple(sparse_mx):
     return coords, values, shape
 
 
-
 def preprocess_graph(adj):
     adj_ = sp.coo_matrix(adj)
     rowsum = np.array(adj_.sum(1))
@@ -45,7 +39,6 @@ def preprocess_graph(adj):
         degree_mat_inv_sqrt).transpose().dot(degree_mat_inv_sqrt)
     adj_nomalized = adj_nomalized.tocoo()
     return sparse_to_tuple(adj_nomalized)
-
 
 def constructNet(drug_dis_matrix):
     drug_matrix = np.matrix(
