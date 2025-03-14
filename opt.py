@@ -2,7 +2,6 @@ from clr import cyclic_learning_rate
 import tensorflow as tf
 
 
-
 class Optimizer():
     def __init__(self, model, preds, labels, lr, num_u, num_v, association_nam):
         norm = num_u*num_v / float((num_u*num_v-association_nam) * 2)
