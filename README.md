@@ -21,6 +21,5 @@ The code has been tested running under Python 3.7. The required packages are as 
 ### Usage
 ```shell
 git clone https://github.com/tanhe16/AGRL-DSE.git.
-cd LAGCN/code
 python main.py
 ```
